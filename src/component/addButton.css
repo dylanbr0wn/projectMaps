@@ -1,0 +1,33 @@
+.edit-enter {
+    opacity: 0;
+}
+.edit-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+.edit-exit {
+    opacity: 1;
+}
+.edit-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.modal-add-btn{
+    vertical-align: middle;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 3px;
+    color:white;
+    background-color: #333333;
+    font-size: 1.2rem;
+    width: 80%;
+    align-self: end;
+}
+.modal-add-btn .fa{
+    color:#dddddd;
+    margin: 0 10px;
+}
+.modal-add-btn:hover {
+    background-color: #555555;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #111111;
   height:100vh;
 
   align-items: center;
@@ -12,25 +12,51 @@
 h1{
   margin-block-start: 0;
   font-size: 1.3em;
-  font-weight: lighter;
   margin: auto auto;
+  font-weight: 300;
+  font-family: 'Jost', sans-serif;
 }
 
+.list-title{
+  text-align: left;
+  font-size: 1.2rem;
+  color: #cccccc;
+  font-weight: bolder;
+  margin: 0 0 5px;
+  padding: 2px;
 
+}
 
 .info-area{
-  display: inline-block;
-  width: 100%;
-  height:33vh
+  position: fixed;
+  z-index: 1000;
+  bottom: 3vh;
+  left: 1vh;
+
 }
 .map-area{
   display: inline-block;
   width: 100%;
-  height: 60vh;
+  height: 94vh;
 }
 
 .list-area{
+  height: 92vh;
+  overflow:scroll;
+}
 
+.add-button{
+  position: absolute;
+  bottom: 1vh;
+  width: 20%;
+
+}
+
+.list-hr{
+  height: 1px;
+  border: none;
+  color: grey;
+  background-color: dimgrey;
 }
 .header-area{
   text-align: center;
@@ -38,13 +64,17 @@ h1{
 
 ul{
   list-style-type: none;
-  margin-bottom: 200px;
   padding-inline-start: 0;
+  margin: 0;
+
 }
 li{
-  padding: 5px 5px;
-  margin-top: 5px;
+
+  padding: 10px 5px;
   cursor: pointer;
+  border-radius: 7px;
+  font-size: 1.3rem;
+  font-weight: lighter;
 
 }
 
@@ -58,30 +88,43 @@ li:hover{
 
 .row1{
   display: flex;
-  height: 7vh;
+  height: 6vh;
   background-color: #222222;
   text-align: center;
+  letter-spacing: 3px;
+
+  border-bottom: 1px solid #444444;
 }
 
 .row2{
   display: flex;
-  height: 93vh;
+  height: 94vh;
+}
+.column-title{
+  padding: 5px;
+  margin:0;
+  font-weight: 200;
+  font-size: 1.7rem;
+  font-family: 'Jost', sans-serif;
 }
 
 .column1 {
-  flex: 70%;
+  flex: 80%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
 }
 .column2 {
-  flex: 30%;
-  height: 93vh;
-  overflow:scroll;
+  flex: 20%;
+  height: 92vh;
+
+  padding: 1vh 1%;
   /*border-left: white solid 2px;*/
-  background-color: #262626;
+  background-color: #111111;
 }
+
+
 
 .App-logo {
   height: 40vmin;
@@ -116,4 +159,38 @@ li:hover{
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.modal {
+  z-index: 100;
+  display: block;
+  position: fixed;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  position: relative;
+  background-color: #262626;
+  padding: 20px;
+  margin: auto;
+  width: 75%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.close-btn {
+  float: right;
+  color: lightgray;
+  font-size: 24px;
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: darkgray;
 }

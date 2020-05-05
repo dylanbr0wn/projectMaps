@@ -3,6 +3,7 @@ import './App.css';
 import Info from './component/info';
 import dbService from './services/databaseService';
 import MapArea from './component/map'
+import AddButton from "./component/addButton";
 
 function InfoSection(props){
     if(!props.ready){
@@ -43,7 +44,7 @@ class App extends Component {
 
                     <div className="column1">
                         <div className="info-area">
-                            <InfoSection dest={this.state.selectedDest} ready={ready} addElement={this.addElement} editElement={this.editElement} deleteElement={this.deleteElement}/>
+                            <InfoSection dest={this.state.selectedDest} ready={ready} editElement={this.editElement} deleteElement={this.deleteElement}/>
                         </div>
                         <div className="map-area">
                             <MapArea />
@@ -51,7 +52,14 @@ class App extends Component {
 
                     </div>
                     <div className="column2">
+
+
+
                         {this.listElements()}
+                        <div className="add-button">
+                            <AddButton addElement={this.addElement}/>
+                        </div>
+
                     </div>
                 </div>
 
@@ -63,18 +71,30 @@ class App extends Component {
 
     listElements(){
         const visitedPlaces = this.state.dest.filter(place=> place.done === true).map(dest =>
-            <li key={dest._id} className={dest === this.state.selectedDest ? "active" : null} onClick={this.elementClick.bind(this,dest)}>{dest.name}</li>
+            <li key={dest._id}
+                // className={dest === this.state.selectedDest ? "active" : null}
+                onClick={this.elementClick.bind(this,dest)}
+            >
+                {dest.name}
+            </li>
         );
         const notVisitedPlaces = this.state.dest.filter(place=> place.done === false).map(dest =>
-            <li key={dest._id} className={dest === this.state.selectedDest ? "active" : null} onClick={this.elementClick.bind(this,dest)}>{dest.name}</li>
+            <li key={dest._id}
+                // className={dest === this.state.selectedDest ? "active" : null}
+                onClick={this.elementClick.bind(this,dest)}
+            >
+                {dest.name}
+            </li>
         );
         return(
             <div className="list-area">
-                <h2>Not Visited</h2>
+                <h2 className="column-title">Places</h2>
+                <h2 className="list-title">Not Visited</h2>
                 <ul>
                     {notVisitedPlaces}
                 </ul>
-                <h2>Visited</h2>
+                <hr className="list-hr"/>
+                <h2 className="list-title">Visited</h2>
                 <ul>
                     {visitedPlaces}
                 </ul>

@@ -13,6 +13,22 @@
     opacity: 0;
     transition: opacity 500ms;
 }
+
+.info-title{
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 5px;
+}
+
+.info-hr{
+    height: 1px;
+    border: none;
+    color: grey;
+    background-color: dimgrey;
+}
+
 .modal {
     z-index: 100;
     display: block;
@@ -46,16 +62,83 @@
     color: darkgray;
 }
 
-.modal-btn{
-    margin: 0 0 0 20px;
+.modal-edit-btn{
+    margin: 0 5px;
+    float:right;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color:#dddddd;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+.modal-edit-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+.modal-close-btn{
+    margin: 0 5px;
+    float:right;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color:#dddddd;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+.modal-close-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+.modal-delete-btn{
     vertical-align: middle;
     padding: 10px 10px;
-    border-radius: 10px;
-    font-size: 1rem;
+    border: none;
+    border-radius: 3px;
+    color:red;
+    background-color: transparent;
+    font-size: 1.2rem;
 }
-.modal-btn:hover {
-    box-shadow: 0px 6px 15px 3px rgba(0,0,0,0.3);
+.modal-delete-btn:hover {
+    background-color: rgba(255,255,255,0.2);
     cursor: pointer;
+}
+
+.modal-info-btn{
+    vertical-align: middle;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    color:white;
+    background-color: #333333;
+    font-size: 1.2rem;
+}
+.modal-info-btn:hover {
+    background-color: #555555;
+    cursor: pointer;
+}
+
+.modal-info-btn .fa{
+    padding:0 10px 0 0;
+}
+
+
+
+.info-line{
+    font-size: 1.3rem;
+    text-align: left;
+    margin-left: 20%;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+}
+
+.info-line-title{
+    font-weight: 400;
+    margin-right: 10px;
 }
 
 .form-area{
@@ -65,6 +148,12 @@
 
 .info-box{
     padding: 5px;
+    max-height: 33vh;
+    background-color: #111111;
+    border-radius: 7px;
+    height:33vh;
+    min-width:270px;
+    max-width: 300vw;
 }
 h2{
     margin: 0 0 20px 0;
