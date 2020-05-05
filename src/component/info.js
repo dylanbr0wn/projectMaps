@@ -109,7 +109,7 @@ class Info extends React.Component{
                                 <span className="info-line-title">Notes:</span> {this.state.place.notes}
                             </div>
                             <button className="modal-delete-btn" onClick={this.setDeleteOn}>
-                                <i className="fa fa-trash"/>Delete
+                                <i className="fa fa-trash"/>Delete 
                             </button>
 
 
