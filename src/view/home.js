@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import './home.css';
 import Info from '../component/info';
 import dbService from '../services/databaseService';
-import MapArea from '../component/map'
+import {MapArea} from '../component/map'
 import AddButton from "../component/addButton";
 
 
