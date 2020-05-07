@@ -1,9 +1,10 @@
 import React, { Component }  from 'react';
-import './App.css';
-import Info from './component/info';
-import dbService from './services/databaseService';
-import MapArea from './component/map'
-import AddButton from "./component/addButton";
+import './home.css';
+import Info from '../component/info';
+import dbService from '../services/databaseService';
+import MapArea from '../component/map'
+import AddButton from "../component/addButton";
+
 
 function InfoSection(props){
     if(!props.ready){
@@ -15,7 +16,7 @@ function InfoSection(props){
 }
 
 
-class App extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -40,10 +41,7 @@ class App extends Component {
     render() {
         const ready = this.state.ready
         return (
-            <div className="App">
-                <div className="row1">
-                    <h1>Project Maps</h1>
-                </div>
+
                 <div className="row2">
 
                     <div className="column1">
@@ -51,27 +49,17 @@ class App extends Component {
                             <InfoSection dest={this.state.selectedDest} ready={ready} editElement={this.editElement} deleteElement={this.deleteElement}/>
                         </div>
                         <div className="map-area">
-
                             <MapArea updateMarker={this.updateMapMarker.bind(this)} ready={ready} selectedDest={this.state.selectedDest}/>
-
-
-
                         </div>
-
                     </div>
                     <div className="column2">
-
-
-
                         {this.listElements()}
                         <div className="add-button">
                             <AddButton mapMarker={this.state.mapMarker} addElement={this.addElement}/>
                         </div>
-
                     </div>
                 </div>
 
-            </div>
         );
   }
 
@@ -171,4 +159,4 @@ function isEmpty(obj) {
     return true;
 }
 
-export default App;
+export default Home;

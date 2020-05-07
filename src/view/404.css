@@ -1,0 +1,10 @@
+.no-match{
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    padding-top: 20vh;
+}
+
+.no-match h1{
+    font-size: 3rem;
+}

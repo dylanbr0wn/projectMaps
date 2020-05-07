@@ -1,0 +1,26 @@
+.App {
+    text-align: center;
+    background-color: #111111;
+    height:100vh;
+
+    align-items: center;
+    justify-content: start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}
+.fade-exit{
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}
+.fade-exit-active{
+    opacity:0;
+}

@@ -1,0 +1,47 @@
+h1{
+    margin-block-start: 0;
+    font-size: 1.7rem;
+    font-weight: 300;
+    font-family: 'Jost', sans-serif;
+}
+
+.app-title{
+    text-align: center;
+    vertical-align: center;
+    margin: auto 0;
+}
+.row1{
+    display: flex;
+    height: 6vh;
+    background-color: #222222;
+    text-align: center;
+    letter-spacing: 3px;
+
+    border-bottom: 1px solid #444444;
+}
+
+.header-link-home{
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-family: 'Jost', sans-serif;
+    margin: auto auto auto 5vh;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.header-link-gps{
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-family: 'Jost', sans-serif;
+    margin: auto 5vh auto auto;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.header-links{
+    margin: auto auto;
+}
+
+.header-link-gps:hover, .header-link-home:hover{
+    color: #9438ef;
+}
