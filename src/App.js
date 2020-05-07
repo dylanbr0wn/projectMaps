@@ -115,7 +115,7 @@ class App extends Component {
 
   elementClick(dest){
       if(dest._id !== this.state.selectedDest._id){
-          this.setState({selectedDest:dest})
+          this.getPlace(dest._id)
       }
   }
 
@@ -153,12 +153,12 @@ class App extends Component {
                   dest: res.data
               });
               if(!isEmpty(this.state.selectedDest)){
-                  this.getPlace();
+                  this.getPlace(this.state.selectedDest._id);
               }
           })
   }
-    getPlace(){
-        dbService.getPlace(this.state.selectedDest._id)
+    getPlace(id){
+        dbService.getPlace(id)
             .then(res => {
                 this.setState({selectedDest: res.data,ready:true})
             })

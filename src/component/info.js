@@ -96,7 +96,7 @@ export default class Info extends React.Component{
                         }
                         { this.state.place.elevation !== '' &&
                             <div className="info-line">
-                                <span className="info-line-title">Elevation:</span> {this.state.place.elevation.toFixed(4)}m
+                                <span className="info-line-title">Elevation:</span> {Math.round(this.state.place.elevation)}m
                             </div>
                         }
 
