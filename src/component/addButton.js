@@ -44,10 +44,11 @@ export default class AddButton extends React.Component {
                 >
                     <div className="modal">
                         <div className="modal-content">
-                            <span className="close-btn" onClick={this.setAddOff}>&times;</span>
+                            <button className="close-btn" onClick={this.setAddOff}>
+                                <i className="fa fa-times"/>
+                            </button>
                             <div className="form-area">
-                                <h2>New Place</h2>
-                                <AddInput  onFormSubmit={this.addSubmit}/>
+                                <AddInput mapMarker={this.props.mapMarker} onFormSubmit={this.addSubmit}/>
                             </div>
                         </div>
                     </div>

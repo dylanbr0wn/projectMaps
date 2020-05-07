@@ -29,42 +29,42 @@
     background-color: dimgrey;
 }
 
-.modal {
-    z-index: 100;
-    display: block;
-    position: fixed;
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.5);
-}
 .modal-content {
     position: relative;
     background-color: #262626;
     padding: 20px;
-    margin: auto;
-    width: 75%;
+    width:50%;
+    border-radius: 10px;
+    margin: 15vh auto;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
 }
 .close-btn {
-    float: right;
-    color: lightgray;
-    font-size: 24px;
-    font-weight: bold;
+
+    border-radius: 50%;
+    border: none;
+    width: 35px;
+    height: 35px;
+    float:right;
+    color:#eeeeee;
+    background-color: transparent;
+    transition: background-color 0.2s ease ;
+    font-size: 1.2rem;
 }
 .close-btn:hover {
-    color: darkgray;
+    background-color: rgba(255,255,255,0.1);
+    cursor: pointer;
+}
+
+.close-btn .fa{
+    color: #eeeeee;
 }
 
 .modal-edit-btn{
-    margin: 0 5px;
-    float:right;
+    z-index: 20;
+    float: right;
     vertical-align: middle;
     border: none;
     border-radius: 50%;
@@ -72,6 +72,7 @@
     height: 35px;
     color:#dddddd;
     background-color: transparent;
+    transition: background-color 0.2s ease ;
     font-size: 1.2rem;
 }
 .modal-edit-btn:hover {
@@ -88,6 +89,7 @@
     height: 35px;
     color:#dddddd;
     background-color: transparent;
+    transition: background-color 0.2s ease ;
     font-size: 1.2rem;
 }
 .modal-close-btn:hover {
@@ -116,6 +118,7 @@
     color:white;
     background-color: #333333;
     font-size: 1.2rem;
+    transition: background-color 0.2s ease ;
 }
 .modal-info-btn:hover {
     background-color: #555555;
@@ -158,4 +161,42 @@
 h2{
     margin: 0 0 20px 0;
     padding: 10px;
+}
+
+.confirm-btn {
+    vertical-align: middle;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 3px;
+    color:white;
+    background-color: #333333;
+    font-size: 1.2rem;
+    width: 20%;
+    align-self: end;
+    margin-top: 20px;
+    transition: background-color 0.3s ease ;
+}
+.confirm-btn:hover {
+    background-color: #9438ef;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    vertical-align: middle;
+    padding: 9px 9px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    color:white;
+    background-color: darkred;
+    font-size: 1.2rem;
+    width: 20%;
+    align-self: end;
+    margin-top: 20px;
+    transition: background-color 0.3s ease ;
+}
+.cancel-btn:hover {
+    background-color: #333333;
+    border: 1px solid darkred ;
+    cursor: pointer;
 }

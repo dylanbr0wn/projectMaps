@@ -10,7 +10,7 @@ function InfoSection(props){
         return null
     }
     return(
-        <Info dest={props.dest} ready={props.ready} addElement={props.addElement} editElement={props.editElement} deleteElement={props.deleteElement}/>
+        <Info dest={props.dest} ready={props.ready} editElement={props.editElement} deleteElement={props.deleteElement}/>
     )
 }
 
@@ -21,7 +21,8 @@ class App extends Component {
         this.state={
             dest: [],
             selectedDest: {},
-            ready: false
+            ready: false,
+            mapMarker:{},
         };
         this.addElement = this.addElement.bind(this);
         this.editElement = this.editElement.bind(this);
@@ -32,8 +33,13 @@ class App extends Component {
         this.getPlaces()
 
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(this.state.selectedDest._id !== prevState.selectedDest._id){
+            this.getPlace()
+        }
+    }
 
-  render() {
+    render() {
         const ready = this.state.ready
         return (
             <div className="App">
@@ -47,7 +53,11 @@ class App extends Component {
                             <InfoSection dest={this.state.selectedDest} ready={ready} editElement={this.editElement} deleteElement={this.deleteElement}/>
                         </div>
                         <div className="map-area">
-                            <MapArea />
+
+                            <MapArea updateMarker={this.updateMapMarker.bind(this)} ready={ready} selectedDest={this.state.selectedDest}/>
+
+
+
                         </div>
 
                     </div>
@@ -57,7 +67,7 @@ class App extends Component {
 
                         {this.listElements()}
                         <div className="add-button">
-                            <AddButton addElement={this.addElement}/>
+                            <AddButton mapMarker={this.state.mapMarker} addElement={this.addElement}/>
                         </div>
 
                     </div>
@@ -104,12 +114,19 @@ class App extends Component {
     };
 
   elementClick(dest){
-      this.setState({selectedDest:dest})
+      if(dest._id !== this.state.selectedDest._id){
+          this.setState({selectedDest:dest})
+      }
+  }
+
+  updateMapMarker(marker){
+      this.setState({mapMarker: marker})
   }
 
     addElement(place){
       dbService.postPlace(place)
           .then(res => {
+              this.setState({selectedDest:res.data})
               this.getPlaces()
           })
     }
@@ -123,8 +140,9 @@ class App extends Component {
     deleteElement(id){
         dbService.deletePlace(id)
             .then(res => {
+                this.setState({selectedDest:{},ready:false})
                 this.getPlaces()
-                this.setState({selectedDest:this.state.dest[0]})
+
             })
     }
 
@@ -132,12 +150,19 @@ class App extends Component {
       dbService.getPlaces()
           .then(res => {
               this.setState({
-                  dest: res.data,
-                  selectedDest: isEmpty(this.state.selectedDest) ? res.data[0] : this.state.selectedDest,
-                  ready:true
+                  dest: res.data
               });
+              if(!isEmpty(this.state.selectedDest)){
+                  this.getPlace();
+              }
           })
   }
+    getPlace(){
+        dbService.getPlace(this.state.selectedDest._id)
+            .then(res => {
+                this.setState({selectedDest: res.data,ready:true})
+            })
+    }
 
 }
 function isEmpty(obj) {
