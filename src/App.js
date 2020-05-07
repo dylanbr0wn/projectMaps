@@ -34,9 +34,7 @@ class App extends Component {
 
     }
     componentDidUpdate(prevProps, prevState) {
-        if(this.state.selectedDest._id !== prevState.selectedDest._id){
-            this.getPlace()
-        }
+
     }
 
     render() {

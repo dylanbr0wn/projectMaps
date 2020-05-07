@@ -214,3 +214,7 @@ input:-webkit-autofill:active  {
 input:-webkit-autofill {
 
 }
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* make scrollbar transparent */
+}
