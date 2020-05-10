@@ -1,12 +1,12 @@
-import * as React from "react";
+import React, { Component } from "react";
 import './info.css';
 import { CSSTransition } from 'react-transition-group';
-import {EditInput} from "./input";
+import { EditInput } from "./input";
 
-export default class Info extends React.Component{
+export default class Info extends Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             place: {},
             change: false,
             edit: false,
@@ -22,44 +22,42 @@ export default class Info extends React.Component{
         this.setDeleteOff = this.setDeleteOff.bind(this);
     }
     componentDidMount() {
-        this.setState({place: this.props.dest})
+        this.setState({ place: this.props.dest })
 
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.dest !== prevProps.dest) {
-            this.setState({place: this.props.dest})
+            this.setState({ place: this.props.dest })
         }
     }
 
-
-
-    setEditOn(){
-        this.setState({edit: true});
+    setEditOn() {
+        this.setState({ edit: true });
     }
-    setEditOff(){
-        this.setState({edit: false});
+    setEditOff() {
+        this.setState({ edit: false });
     }
 
-    setDeleteOn(){
-        this.setState({delete: true});
+    setDeleteOn() {
+        this.setState({ delete: true });
     }
-    setDeleteOff(){
-        this.setState({delete: false});
+    setDeleteOff() {
+        this.setState({ delete: false });
     }
 
-    editSubmit(place){
-        this.setState({place:place, edit: false})
+    editSubmit(place) {
+        this.setState({ place: place, edit: false })
         this.props.editElement(place)
 
     }
-    deleteSubmit(){
-        this.setState({delete: false})
+    deleteSubmit() {
+        this.setState({ delete: false })
         this.props.deleteElement(this.state.place._id)
 
     }
-    toggleInfo(){
-        this.setState({showInfo: !this.state.showInfo})
+    toggleInfo() {
+        this.setState({ showInfo: !this.state.showInfo })
     }
 
 
@@ -72,59 +70,54 @@ export default class Info extends React.Component{
                 {
                     !this.state.showInfo && this.props.ready &&
                     <button className="modal-info-btn" onClick={this.toggleInfo.bind(this)}>
-                        <i className="fa fa-info"/>{destName}
+                        <i className="fa fa-info" />{destName}
                     </button>
                 }
                 {
                     this.state.showInfo &&
                     <div className="info-box" >
-                            <h2 className="info-title">{destName}
-                                <button className="modal-close-btn" onClick={this.toggleInfo.bind(this)}>
-                                    <i className="fa fa-angle-double-left"/>
-                                </button>
-                                <button className="modal-edit-btn" onClick={this.setEditOn}>
-                                    <i className="fa fa-pencil"/>
-                                </button>
+                        <h2 className="info-title">{destName}
+                            <button className="modal-close-btn" onClick={this.toggleInfo.bind(this)}>
+                                <i className="fa fa-angle-double-left" />
+                            </button>
+                            <button className="modal-edit-btn" onClick={this.setEditOn}>
+                                <i className="fa fa-pencil" />
+                            </button>
 
 
-                            </h2>
-                            <hr className="info-hr"/>
-                        { this.state.place.length !== '' &&
+                        </h2>
+                        <hr className="info-hr" />
+                        {this.state.place.length !== '' &&
                             <div className="info-line">
                                 <span className="info-line-title">Distance: </span> {this.state.place.length}km
                             </div>
                         }
-                        { this.state.place.elevation !== '' &&
+                        {this.state.place.elevation !== '' &&
                             <div className="info-line">
                                 <span className="info-line-title">Elevation:</span> {Math.round(this.state.place.elevation)}m
                             </div>
                         }
 
 
-                            <div className="info-line">
-                                <span className="info-line-title">Visited:</span> {this.state.place.done ? "Yes" : "No"}
-                            </div>
+                        <div className="info-line">
+                            <span className="info-line-title">Visited:</span> {this.state.place.done ? "Yes" : "No"}
+                        </div>
 
 
-                        { this.state.place.coordinates.lng !== '' &&
+                        {this.state.place.coordinates.lng !== '' &&
                             <div className="info-line">
                                 <span className="info-line-title">Coordinates:</span>
                                 <div>{this.state.place.coordinates.lng.toFixed(4)}, {this.state.place.coordinates.lat.toFixed(4)}</div>
                             </div>
                         }
-                        { this.state.place.notes !== '' &&
+                        {this.state.place.notes !== '' &&
                             <div className="info-line">
                                 <span className="info-line-title">Notes:</span> {this.state.place.notes}
                             </div>
                         }
-                            <button className="modal-delete-btn" onClick={this.setDeleteOn}>
-                                <i className="fa fa-trash"/>Delete 
+                        <button className="modal-delete-btn" onClick={this.setDeleteOn}>
+                            <i className="fa fa-trash" />Delete
                             </button>
-
-
-
-
-
                         <CSSTransition
                             in={this.state.delete}
                             timeout={300}
@@ -134,7 +127,7 @@ export default class Info extends React.Component{
                             <div className="modal">
                                 <div className="modal-content">
                                     <button className="close-btn" onClick={this.setDeleteOff}>
-                                        <i className="fa fa-times"/>
+                                        <i className="fa fa-times" />
                                     </button>
                                     <div className="form-area">
                                         <h2>Delete Place</h2>
@@ -154,11 +147,11 @@ export default class Info extends React.Component{
                             <div className="modal">
                                 <div className="modal-content">
                                     <button className="close-btn" onClick={this.setEditOff}>
-                                        <i className="fa fa-times"/>
+                                        <i className="fa fa-times" />
                                     </button>
                                     <div className="form-area">
                                         <h2>Edit Place</h2>
-                                        <EditInput place={this.state.place} onFormSubmit={this.editSubmit}/>
+                                        <EditInput place={this.state.place} onFormSubmit={this.editSubmit} />
                                     </div>
                                 </div>
                             </div>
