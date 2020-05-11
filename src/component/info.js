@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './info.css';
 import { CSSTransition } from 'react-transition-group';
 import { EditInput } from "./input";
+import AnimatedTooltip from './tooltip';
 
 export default class Info extends Component {
     constructor(props) {
@@ -69,22 +70,28 @@ export default class Info extends Component {
             <div>
                 {
                     !this.state.showInfo && this.props.ready &&
-                    <button className="modal-info-btn" onClick={this.toggleInfo.bind(this)}>
-                        <i className="fa fa-info" />{destName}
-                    </button>
+                    <AnimatedTooltip label="Open Information">
+                        <button className="modal-info-btn" onClick={this.toggleInfo.bind(this)}>
+                            <i className="fa fa-info" />{destName}
+                        </button>
+                    </AnimatedTooltip>
+
                 }
                 {
                     this.state.showInfo &&
                     <div className="info-box" >
                         <h2 className="info-title">{destName}
-                            <button className="modal-close-btn" onClick={this.toggleInfo.bind(this)}>
-                                <i className="fa fa-angle-double-left" />
-                            </button>
-                            <button className="modal-edit-btn" onClick={this.setEditOn}>
-                                <i className="fa fa-pencil" />
-                            </button>
+                            <AnimatedTooltip label="Close Information">
+                                <button className="modal-close-btn" onClick={this.toggleInfo.bind(this)}>
+                                    <i className="fa fa-angle-double-left" />
+                                </button>
+                            </AnimatedTooltip>
 
-
+                            <AnimatedTooltip label="Edit Place">
+                                <button className="modal-edit-btn" onClick={this.setEditOn}>
+                                    <i className="fa fa-pencil" />
+                                </button>
+                            </AnimatedTooltip>
                         </h2>
                         <hr className="info-hr" />
                         {this.state.place.length !== '' &&

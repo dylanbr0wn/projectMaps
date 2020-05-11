@@ -1,26 +1,33 @@
-h1{
+h1 {
     margin-block-start: 0;
     font-size: 1.7rem;
     font-weight: 300;
     font-family: 'Jost', sans-serif;
 }
 
-.app-title{
+.active-link {
+    color: #cf9fff !important;
+
+}
+
+
+.app-title {
     text-align: center;
     vertical-align: center;
     margin: auto 0;
 }
-.row1{
+
+.row1 {
     display: flex;
     height: 6vh;
-    background-color: #222222;
+    background-color: #252525;
     text-align: center;
     letter-spacing: 3px;
 
     border-bottom: 1px solid #444444;
 }
 
-.header-link-home{
+.header-link-home {
     font-size: 1.1rem;
     font-weight: 300;
     font-family: 'Jost', sans-serif;
@@ -29,7 +36,8 @@ h1{
     text-decoration: none;
     transition: all 0.2s ease;
 }
-.header-link-gps{
+
+.header-link-gps {
     font-size: 1.1rem;
     font-weight: 300;
     font-family: 'Jost', sans-serif;
@@ -38,10 +46,13 @@ h1{
     text-decoration: none;
     transition: all 0.2s ease;
 }
-.header-links{
+
+.header-links {
     margin: auto auto;
 }
 
-.header-link-gps:hover, .header-link-home:hover{
-    color: #9438ef;
+.header-link-gps:hover,
+.header-link-home:hover,
+.active-link:hover {
+    color: #9438ef !important;
 }

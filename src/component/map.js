@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import mapboxgl from 'mapbox-gl';
 import mapQuery from 'mapbox-elevation';
+import { MapboxStyleSwitcherControl } from "mapbox-gl-style-switcher";
+import "mapbox-gl-style-switcher/styles.css";
 
 import './map.css';
 
@@ -27,7 +29,7 @@ export class MapArea extends Component {
 
         const map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/outdoors-v11',
+            style: 'mapbox://styles/mapbox/outdoors-v11?optimize=true',
             center: [-123.36, 48.43],
             zoom: this.state.zoom
         });
@@ -44,6 +46,23 @@ export class MapArea extends Component {
         });
         map.on('click', this.handleMapClick.bind(this));
 
+        const styles = [
+            {
+                title: "Outdoors",
+                uri: "mapbox://styles/mapbox/outdoors-v11"
+            },
+            {
+                title: "Dark",
+                uri: "mapbox://styles/mapbox/dark-v9"
+            },
+            {
+                title: "Satellite",
+                uri: "mapbox://styles/mapbox/satellite-v9"
+            }
+
+        ];
+
+        map.addControl(new MapboxStyleSwitcherControl(styles));
 
         this.setState({ map: map, marker: marker });
     }
@@ -170,6 +189,8 @@ export class MapGPS extends Component {
                 zoom: map.getZoom().toFixed(2)
             });
         });
+
+
         map.addControl(new mapboxgl.FullscreenControl());
         var marker = new mapboxgl.Marker({
             'color': '#314ccd'

@@ -1,12 +1,12 @@
 import React from "react";
 import "./header.css"
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => (
     <div className="row1">
-        <Link className="header-link-gps" to="/gps">GPS</Link>
+        <NavLink activeClassName="active-link" className="header-link-gps" to="/gps">GPS</NavLink>
         <h1 className="app-title">Project Maps</h1>
-        <Link className="header-link-home" to="/">Home</Link>
+        <NavLink activeClassName="active-link" className="header-link-home" to="/">Home</NavLink>
     </div>
 );
 export default Header;

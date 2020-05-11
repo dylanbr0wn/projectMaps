@@ -1,62 +1,46 @@
-import {AddInput} from "./input";
-import {CSSTransition} from "react-transition-group";
-import * as React from "react";
+import { AddInput } from "./input";
+import { CSSTransition } from "react-transition-group";
+import React, { useState, Fragment } from "react";
 import './addButton.css'
+import AnimatedTooltip from './tooltip';
 
-export default class AddButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            place: {},
-            change: false,
-            add: false,
-        }
-        this.setAddOn = this.setAddOn.bind(this);
-        this.setAddOff = this.setAddOff.bind(this);
-        this.addSubmit = this.addSubmit.bind(this);
+const AddButton = (props) => {
+    const [add, setAdd] = useState(false);
+
+    const addSubmit = (place) => {
+        setAdd(false);
+        props.addElement(place);
     }
 
-    setAddOn(){
-        this.setState({add: true});
-    }
-    setAddOff(){
-        this.setState({add: false});
-    }
-    addSubmit(place){
-        this.setState({place: place,add: false})
-        this.props.addElement(place)
-
-    }
-
-
-    render(){
-        return(
-            <div>
-                <button className="modal-add-btn" onClick={this.setAddOn}>
-                    Add New
-                    <i className="fa fa-plus"/>
+    return (
+        <Fragment>
+            <AnimatedTooltip label="Add Place">
+                <button className="modal-add-btn" onClick={() => setAdd(true)}>
+                    <i className="fa fa-plus" />
                 </button>
-                <CSSTransition
-                    in={this.state.add}
-                    timeout={300}
-                    classNames="edit"
-                    unmountOnExit
-                >
-                    <div className="modal">
-                        <div className="modal-content">
-                            <button className="close-btn" onClick={this.setAddOff}>
-                                <i className="fa fa-times"/>
-                            </button>
-                            <div className="form-area">
-                                <AddInput mapMarker={this.props.mapMarker} onFormSubmit={this.addSubmit}/>
-                            </div>
+            </AnimatedTooltip>
+
+            <CSSTransition
+                in={add}
+                timeout={300}
+                classNames="edit"
+                unmountOnExit
+            >
+                <div className="modal">
+                    <div className="modal-content">
+                        <button className="close-btn" onClick={() => setAdd(false)}>
+                            <i className="fa fa-times" />
+                        </button>
+                        <div className="form-area">
+                            <AddInput mapMarker={props.mapMarker} onFormSubmit={addSubmit} />
                         </div>
                     </div>
+                </div>
 
-                </CSSTransition>
-            </div>
+            </CSSTransition>
+        </Fragment>
 
-        )
-    }
-}
+    )
+};
 
+export default AddButton;

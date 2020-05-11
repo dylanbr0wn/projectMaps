@@ -1,21 +1,24 @@
 import React, { lazy, Suspense } from "react";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { animated, useTransition, config } from "react-spring";
 
 const Home = lazy(() => import("./view/home"));
 const GPS = lazy(() => import("./view/gps"));
 const NoMatch = lazy(() => import("./view/404"));
 
-const AppRouter = withRouter(({ location }) => (
+const AppRouter = () => {
 
-    <SwitchTransition>
-        <CSSTransition
-            key={location.pathname}
-            classNames="fade"
-            timeout={300}
-        >
+    const location = useLocation();
+    const transitions = useTransition(location, location => location.pathname, {
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 },
+        config: config.gentle,
+    });
+    return transitions.map(({ item, props, key }) => (
+        <animated.div key={key} style={props}>
             <Suspense fallback={<div> Loading ...</div>}>
-                <Switch location={location}>
+                <Switch location={item}>
                     <Route exact path="/"  >
                         <Home />
                     </Route>
@@ -27,9 +30,9 @@ const AppRouter = withRouter(({ location }) => (
                     </Route>
                 </Switch>
             </Suspense>
-        </CSSTransition>
-    </SwitchTransition>
+        </animated.div>
 
-));
+    ));
+}
 
 export default AppRouter;
