@@ -1,177 +1,127 @@
-import React, { Component } from "react";
-import './info.css';
-import { CSSTransition } from 'react-transition-group';
-import { EditInput } from "./input";
-import AnimatedTooltip from './tooltip';
+import React, { useState } from "react";
+import "./info.css";
+import Input from "./input";
+import AnimatedTooltip from "./common/AnimatedToolTip";
+import CircleActionButton from "./common/CircleActionButton";
+import Modal from "./common/Modal";
 
-export default class Info extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            place: {},
-            change: false,
-            edit: false,
-            showInfo: false,
-            delete: false
-        }
-        this.setEditOn = this.setEditOn.bind(this);
-        this.setEditOff = this.setEditOff.bind(this);
+const Info = props => {
+    const [showEdit, setShowEdit] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
 
-        this.editSubmit = this.editSubmit.bind(this);
-        this.deleteSubmit = this.deleteSubmit.bind(this);
-        this.setDeleteOn = this.setDeleteOn.bind(this);
-        this.setDeleteOff = this.setDeleteOff.bind(this);
-    }
-    componentDidMount() {
-        this.setState({ place: this.props.dest })
+    const editSubmit = place => {
+        setShowEdit(false);
+        props.editElement({ ...place, _id: props.place._id });
+    };
+    const deleteSubmit = () => {
+        setShowDelete(false);
+        props.deleteElement(props.place._id);
+    };
 
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.dest !== prevProps.dest) {
-            this.setState({ place: this.props.dest })
-        }
-    }
-
-    setEditOn() {
-        this.setState({ edit: true });
-    }
-    setEditOff() {
-        this.setState({ edit: false });
-    }
-
-    setDeleteOn() {
-        this.setState({ delete: true });
-    }
-    setDeleteOff() {
-        this.setState({ delete: false });
-    }
-
-    editSubmit(place) {
-        this.setState({ place: place, edit: false })
-        this.props.editElement(place)
-
-    }
-    deleteSubmit() {
-        this.setState({ delete: false })
-        this.props.deleteElement(this.state.place._id)
-
-    }
-    toggleInfo() {
-        this.setState({ showInfo: !this.state.showInfo })
-    }
-
-
-
-    render() {
-        const destName = 'name' in this.props.dest ? this.props.dest.name : this.state.name
-
-        return (
-            <div>
-                {
-                    !this.state.showInfo && this.props.ready &&
-                    <AnimatedTooltip label="Open Information">
-                        <button className="modal-info-btn" onClick={this.toggleInfo.bind(this)}>
-                            <i className="fa fa-info" />{destName}
-                        </button>
-                    </AnimatedTooltip>
-
-                }
-                {
-                    this.state.showInfo &&
-                    <div className="info-box" >
-                        <h2 className="info-title">{destName}
-                            <AnimatedTooltip label="Close Information">
-                                <button className="modal-close-btn" onClick={this.toggleInfo.bind(this)}>
-                                    <i className="fa fa-angle-double-left" />
-                                </button>
-                            </AnimatedTooltip>
-
-                            <AnimatedTooltip label="Edit Place">
-                                <button className="modal-edit-btn" onClick={this.setEditOn}>
-                                    <i className="fa fa-pencil" />
-                                </button>
-                            </AnimatedTooltip>
-                        </h2>
-                        <hr className="info-hr" />
-                        {this.state.place.length !== '' &&
-                            <div className="info-line">
-                                <span className="info-line-title">Distance: </span> {this.state.place.length}km
-                            </div>
-                        }
-                        {this.state.place.elevation !== '' &&
-                            <div className="info-line">
-                                <span className="info-line-title">Elevation:</span> {Math.round(this.state.place.elevation)}m
-                            </div>
-                        }
-
-
+    return (
+        <div>
+            {!showInfo && (
+                <AnimatedTooltip label="Open Information">
+                    <button
+                        className="modal-info-btn"
+                        onClick={() => setShowInfo(!showInfo)}
+                    >
+                        <i className="fa fa-info" />
+                        {props.place.name}
+                    </button>
+                </AnimatedTooltip>
+            )}
+            {showInfo && (
+                <div className="info-box">
+                    <h2 className="info-title">
+                        {props.place.name}
+                        <CircleActionButton
+                            label="Close Information"
+                            name="close"
+                            onClick={() => setShowInfo(!showInfo)}
+                            icon="angle-double-left"
+                        />
+                        <CircleActionButton
+                            label="Edit Place"
+                            name="edit"
+                            onClick={() => setShowEdit(!showEdit)}
+                            icon="pencil"
+                        />
+                    </h2>
+                    <hr className="info-hr" />
+                    {props.place.length !== "" && (
                         <div className="info-line">
-                            <span className="info-line-title">Visited:</span> {this.state.place.done ? "Yes" : "No"}
+                            <span className="info-line-title">Distance: </span>{" "}
+                            {props.place.length}km
                         </div>
+                    )}
+                    {props.place.elevation !== "" && (
+                        <div className="info-line">
+                            <span className="info-line-title">Elevation:</span>{" "}
+                            {Math.round(props.place.elevation)}m
+                        </div>
+                    )}
 
-
-                        {this.state.place.coordinates.lng !== '' &&
-                            <div className="info-line">
-                                <span className="info-line-title">Coordinates:</span>
-                                <div>{this.state.place.coordinates.lng.toFixed(4)}, {this.state.place.coordinates.lat.toFixed(4)}</div>
-                            </div>
-                        }
-                        {this.state.place.notes !== '' &&
-                            <div className="info-line">
-                                <span className="info-line-title">Notes:</span> {this.state.place.notes}
-                            </div>
-                        }
-                        <button className="modal-delete-btn" onClick={this.setDeleteOn}>
-                            <i className="fa fa-trash" />Delete
-                            </button>
-                        <CSSTransition
-                            in={this.state.delete}
-                            timeout={300}
-                            classNames="edit"
-                            unmountOnExit
-                        >
-                            <div className="modal">
-                                <div className="modal-content">
-                                    <button className="close-btn" onClick={this.setDeleteOff}>
-                                        <i className="fa fa-times" />
-                                    </button>
-                                    <div className="form-area">
-                                        <h2>Delete Place</h2>
-                                        <button className="cancel-btn" onClick={this.deleteSubmit}> Cancel</button>
-                                        <button className="confirm-btn" onClick={this.deleteSubmit}> Confirm</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </CSSTransition>
-                        <CSSTransition
-                            in={this.state.edit}
-                            timeout={300}
-                            classNames="edit"
-                            unmountOnExit
-                        >
-                            <div className="modal">
-                                <div className="modal-content">
-                                    <button className="close-btn" onClick={this.setEditOff}>
-                                        <i className="fa fa-times" />
-                                    </button>
-                                    <div className="form-area">
-                                        <h2>Edit Place</h2>
-                                        <EditInput place={this.state.place} onFormSubmit={this.editSubmit} />
-                                    </div>
-                                </div>
-                            </div>
-
-                        </CSSTransition>
+                    <div className="info-line">
+                        <span className="info-line-title">Visited:</span>{" "}
+                        {props.place.done ? "Yes" : "No"}
                     </div>
 
-                }
-            </div>
-
-
-
-        )
-    }
-
-}
+                    {props.place.coordinates.lng !== "" && (
+                        <div className="info-line">
+                            <span className="info-line-title">
+                                Coordinates:
+                            </span>
+                            <div>
+                                {props.place.coordinates.lng.toFixed(4)},{" "}
+                                {props.place.coordinates.lat.toFixed(4)}
+                            </div>
+                        </div>
+                    )}
+                    {props.place.notes !== "" && (
+                        <div className="info-line">
+                            <span className="info-line-title">Notes:</span>{" "}
+                            {props.place.notes}
+                        </div>
+                    )}
+                    <button
+                        className="modal-delete-btn"
+                        onClick={() => setShowDelete(!showDelete)}
+                    >
+                        <i className="fa fa-trash" />
+                        Delete
+                    </button>
+                    <Modal
+                        showOn={showDelete}
+                        setOff={() => setShowDelete(!showDelete)}
+                    >
+                        <h2>Delete Place</h2>
+                        <button
+                            className="cancel-btn"
+                            onClick={() => setShowDelete(!showDelete)}
+                        >
+                            {" "}
+                            Cancel
+                        </button>
+                        <button className="confirm-btn" onClick={deleteSubmit}>
+                            {" "}
+                            Confirm
+                        </button>
+                    </Modal>
+                    <Modal
+                        showOn={showEdit}
+                        setOff={() => setShowEdit(!showEdit)}
+                    >
+                        <Input
+                            type="edit"
+                            place={props.place}
+                            onFormSubmit={editSubmit}
+                        />
+                    </Modal>
+                </div>
+            )}
+        </div>
+    );
+};
+export default Info;

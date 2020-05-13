@@ -1,164 +1,45 @@
-
-.edit-enter {
-    opacity: 0;
-}
-.edit-enter-active {
-    opacity: 1;
-    transition: opacity 500ms;
-}
-.edit-exit {
-    opacity: 1;
-}
-.edit-exit-active {
-    opacity: 0;
-    transition: opacity 500ms;
-}
-
-.info-title{
-    font-family: 'Jost', sans-serif;
+.info-title {
+    font-family: "Jost", sans-serif;
     font-weight: 400;
     font-size: 1.5rem;
     margin: 0;
     padding: 5px;
 }
 
-.info-hr{
+.info-hr {
     height: 1px;
     border: none;
     color: grey;
     background-color: dimgrey;
 }
 
-.modal-content {
-    position: relative;
-    background-color: #262626;
-    padding: 20px;
-    width:50%;
-    border-radius: 10px;
-    margin: 15vh auto;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-}
-.close-btn {
-
-    border-radius: 50%;
-    border: none;
-    width: 35px;
-    height: 35px;
-    float:right;
-    color:#eeeeee;
-    background-color: transparent;
-    transition: background-color 0.2s ease ;
-    font-size: 1.2rem;
-}
-.close-btn:hover {
-    background-color: rgba(255,255,255,0.1);
-    cursor: pointer;
-}
-
-.close-btn .fa{
-    color: #eeeeee;
-}
-
-.modal-edit-btn{
-    z-index: 20;
-    float: right;
-    vertical-align: middle;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    color:#dddddd;
-    background-color: transparent;
-    transition: background-color 0.2s ease ;
-    font-size: 1.2rem;
-}
-.modal-edit-btn:hover {
-    background-color: rgba(255,255,255,0.2);
-    cursor: pointer;
-}
-.modal-close-btn{
-    margin: 0 5px;
-    float:right;
-    vertical-align: middle;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    color:#dddddd;
-    background-color: transparent;
-    transition: background-color 0.2s ease ;
-    font-size: 1.2rem;
-}
-.modal-close-btn:hover {
-    background-color: rgba(255,255,255,0.2);
-    cursor: pointer;
-}
-.modal-delete-btn{
-    vertical-align: middle;
-    padding: 10px 10px;
-    border: none;
-    border-radius: 3px;
-    color:red;
-    background-color: transparent;
-    font-size: 1.2rem;
-}
-.modal-delete-btn:hover {
-    background-color: rgba(255,255,255,0.2);
-    cursor: pointer;
-}
-
-.modal-info-btn{
-    vertical-align: middle;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    color:white;
-    background-color: #333333;
-    font-size: 1.2rem;
-    transition: background-color 0.2s ease ;
-}
-.modal-info-btn:hover {
-    background-color: #555555;
-    cursor: pointer;
-}
-
-.modal-info-btn .fa{
-    padding:0 10px 0 0;
-}
-
-
-
-.info-line{
+.info-line {
     font-size: 1.3rem;
     text-align: left;
     margin-left: 20%;
-    font-family: 'Jost', sans-serif;
+    font-family: "Jost", sans-serif;
     font-weight: 300;
 }
 
-.info-line-title{
+.info-line-title {
     font-weight: 400;
     margin-right: 10px;
 }
 
-.form-area{
-
+.form-area {
     width: 100%;
 }
 
-.info-box{
+.info-box {
     padding: 5px;
     max-height: 33vh;
     background-color: #111111;
     border-radius: 7px;
-    height:33vh;
-    min-width:270px;
+    height: 33vh;
+    min-width: 270px;
     max-width: 300vw;
 }
-h2{
+h2 {
     margin: 0 0 20px 0;
     padding: 10px;
 }
@@ -168,13 +49,13 @@ h2{
     padding: 10px 10px;
     border: none;
     border-radius: 3px;
-    color:white;
+    color: white;
     background-color: #333333;
     font-size: 1.2rem;
     width: 20%;
     align-self: end;
     margin-top: 20px;
-    transition: background-color 0.3s ease ;
+    transition: background-color 0.3s ease;
 }
 .confirm-btn:hover {
     background-color: #9438ef;
@@ -187,16 +68,16 @@ h2{
     margin-right: 10px;
     border: none;
     border-radius: 3px;
-    color:white;
+    color: white;
     background-color: darkred;
     font-size: 1.2rem;
     width: 20%;
     align-self: end;
     margin-top: 20px;
-    transition: background-color 0.3s ease ;
+    transition: background-color 0.3s ease;
 }
 .cancel-btn:hover {
     background-color: #333333;
-    border: 1px solid darkred ;
+    border: 1px solid darkred;
     cursor: pointer;
 }

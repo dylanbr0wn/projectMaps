@@ -1,41 +1,52 @@
-import Api from './Api'
+import Api from "./Api";
 
-export default {
+export const getPlaces = () => {
+    return Api().get("places").then(handleResponse).catch(handleError);
+};
 
-  getPlaces() {
-    return Api().get('places')
-  },
+export const searchPlace = (query, page, itemsPerPage) => {
+    return Api().get("search/", {
+        params: {
+            search: query,
+            page: page,
+            itemsPerPage: itemsPerPage,
+        },
+    });
+};
 
-  searchPlace(query, page, itemsPerPage) {
-    return Api().get('search/', {
-      params: {
-        search: query,
-        page: page,
-        itemsPerPage: itemsPerPage
-      }
-    })
-  },
+export const getPlace = id => {
+    return Api().get(`places/${id}`).then(handleResponse).catch(handleError);
+};
 
-  getPlace(id) {
-    return Api().get(`places/${id}`)
-  },
+export const postPlace = place => {
+    return Api()
+        .post("places", JSON.stringify(place), {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then(handleResponse)
+        .catch(handleError);
+};
+export const deletePlace = id => {
+    return Api().delete(`places/${id}`).then(handleResponse).catch(handleError);
+};
+export const putPlace = (place, id) => {
+    return Api()
+        .put(`places/${id}`, JSON.stringify(place), {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then(handleResponse)
+        .catch(handleError);
+};
 
-  postPlace(place) {
-    return Api().post('places', JSON.stringify(place), {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-  },
-  deletePlace(id) {
-    return Api().delete(`places/${id}`)
-  },
-  putPlace(place,id) {
-    return Api().put(`places/${id}`, JSON.stringify(place), {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-  }
-}
+const handleResponse = res => {
+    if (res.data) return res.data;
+    return res;
+};
 
+const handleError = error => {
+    console.log(error.response);
+};

@@ -1,204 +1,143 @@
 .list-title {
-  text-align: left;
-  font-size: 1.2rem;
-  color: #cccccc;
-  font-weight: bolder;
-  margin: 0 0 5px;
-  padding: 2px;
-
+    text-align: left;
+    font-size: 1.2rem;
+    color: #cccccc;
+    font-weight: bolder;
+    margin: 0 0 5px;
+    padding: 2px;
 }
 
 .info-area {
-  position: fixed;
-  z-index: 1000;
-  bottom: 3vh;
-  left: 1vh;
-
+    position: fixed;
+    z-index: 1000;
+    bottom: 3vh;
+    left: 1vh;
 }
 
 .mountain-icon {
-  height: 20px;
-  width: 20px;
-  margin: 0 20px;
-  vertical-align: middle;
-
+    height: 20px;
+    width: 20px;
+    margin: 0 20px;
+    vertical-align: middle;
 }
 
-
 .map-area {
-  display: inline-block;
-  width: 100%;
-  height: 94vh;
+    display: inline-block;
+    width: 100%;
+    height: 94vh;
 }
 
 .list-area {
-  height: 86.5vh;
-  overflow: scroll;
+    height: 86.5vh;
+    overflow: scroll;
 
-  padding: 1vh 1vw 0;
-}
-
-.add-button {
-  position: relative;
-  height: 4.5vh;
-  vertical-align: middle;
-  padding: 1vh 1vw;
-  background-color: #252525;
-  -webkit-box-shadow: 0px 4px 8px -5px rgba(0, 0, 0, 0.67);
-  -moz-box-shadow: 0px 4px 8px -5px rgba(0, 0, 0, 0.67);
-  box-shadow: 0px 4px 8px -5px rgba(0, 0, 0, 0.67);
-
+    padding: 1vh 1vw 0;
 }
 
 .list-hr {
-  height: 1px;
-  border: none;
-  color: grey;
-  background-color: dimgrey;
+    height: 1px;
+    border: none;
+    color: grey;
+    background-color: dimgrey;
 }
 
 .header-area {
-  text-align: center;
+    text-align: center;
 }
 
 ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-  margin: 0;
-
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin: 0;
 }
 
 li {
-  fill: white;
-  padding: 12px 5px;
-  text-align: left;
-  cursor: pointer;
-  color: white;
-  border-radius: 7px;
-  font-size: 1rem;
-  font-weight: 400;
-  transition: all 0.2s ease;
-
+    fill: white;
+    padding: 12px 5px;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
 }
 
 li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #d6adff;
-  fill: #d6adff;
-  ;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #d6adff;
+    fill: #d6adff;
 }
 
 .active {
-  background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-
-
 .row2 {
-  display: flex;
-  height: 94vh;
+    display: flex;
+    height: 94vh;
 }
 
 .column-title {
-  position: absolute;
-  left: 1vw;
-  padding: 5px;
-  display: inline-block;
-  margin: 0;
-  font-weight: 300;
-  font-size: 1.4rem;
-  font-family: 'Jost', sans-serif;
+    position: absolute;
+    left: 1vw;
+    padding: 5px;
+    display: inline-block;
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.4rem;
+    font-family: "Jost", sans-serif;
 }
 
 .column1 {
-  flex: 80%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
+    flex: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .column2 {
-  flex: 20%;
-  height: 94vh;
+    flex: 20%;
+    height: 94vh;
 
-  /*border-left: white solid 2px;*/
-  background-color: #151515;
+    /*border-left: white solid 2px;*/
+    background-color: #151515;
 }
 
-
-
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-.modal {
-  z-index: 100;
-  display: block;
-  position: fixed;
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  position: relative;
-  background-color: #262626;
-  padding: 20px;
-  margin: auto;
-  width: 75%;
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
-
-.close-btn {
-  float: right;
-  color: lightgray;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.close-btn:hover {
-  color: darkgray;
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /*
@@ -208,15 +147,28 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #262626 inset !important;
-  -webkit-text-fill-color: white !important;
-  caret-color: white;
+    -webkit-box-shadow: 0 0 0 30px #262626 inset !important;
+    -webkit-text-fill-color: white !important;
+    caret-color: white;
 }
 
-
-
 ::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-  /* make scrollbar transparent */
+    width: 0;
+    background: transparent;
+    /* make scrollbar transparent */
+}
+
+.edit-enter {
+    opacity: 0;
+}
+.edit-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+.edit-exit {
+    opacity: 1;
+}
+.edit-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
 }

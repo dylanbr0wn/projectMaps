@@ -1,0 +1,91 @@
+.modal-edit-btn {
+    z-index: 20;
+    float: right;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: #dddddd;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    font-size: 1.2rem;
+}
+.modal-edit-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+.modal-close-btn {
+    margin: 0 5px;
+    float: right;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: #dddddd;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    font-size: 1.2rem;
+}
+.modal-close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+.modal-delete-btn {
+    vertical-align: middle;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 3px;
+    color: red;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+.modal-delete-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.modal-info-btn {
+    vertical-align: middle;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background-color: #333333;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+}
+.modal-info-btn:hover {
+    background-color: #555555;
+    cursor: pointer;
+}
+
+.modal-info-btn .fa {
+    padding: 0 10px 0 0;
+}
+.modal-add-btn {
+    position: absolute;
+    display: inline-block;
+    right: 2vw;
+    border: none;
+    border-radius: 50%;
+    height: 4vh;
+    width: 4vh;
+    margin: 0.25vmax;
+
+    color: white;
+    background-color: #333333;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+}
+
+.modal-add-btn .fa {
+    color: #dddddd;
+
+    /* margin: 0 5px 0 10px; */
+}
+.modal-add-btn:hover {
+    background-color: #9438ef;
+    cursor: pointer;
+}

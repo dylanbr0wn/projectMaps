@@ -1,10 +1,10 @@
 import * as React from "react";
-import { MapGPS } from "../component/map";
+import Map from "../component/map";
 
 const GPS = () => {
     return (
         <>
-            <MapGPS />
+            <Map />
         </>
     );
 };
